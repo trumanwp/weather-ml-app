@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import unittest
 from app import app  # Import your Flask app instance
 
@@ -26,20 +30,17 @@ class TestModelAppIntegration(unittest.TestCase):
 	
 		# Complete below
 		# Ensure that the result page (response.data) should include a weather prediction
-		
-	
-		# Ensure that the result page should include a prediction time
-		
-
 		html_text = response.data.decode('utf-8').lower()
 		valid_classes = [
 			'clear', 'cloudy', 'drizzly', 'foggy', 'hazey',
 			'misty', 'rainy', 'smokey', 'thunderstorm'
 		]
 		found = any(weather in html_text for weather in valid_classes)
-		
-		# Ensure that classification is in valid classes, provide an error message if not.
-		
+		self.assertTrue(found, "The page should include a valid weather prediction.")
+
+		# Ensure that the result page should include a prediction time
+		self.assertIn('seconds', html_text, "The page should include a prediction time.")
+				
 
 if __name__ == '__main__':
 	unittest.main()
