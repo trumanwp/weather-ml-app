@@ -1,0 +1,11 @@
+---
+- hosts: production
+  tasks:
+    - name: Apply Kubernetes Deployment
+      command: kubectl apply -f /home/ubuntu/ansible/deployment.yaml
+
+    - name: Apply Kubernetes Service
+      command: kubectl apply -f /home/ubuntu/ansible/service.yaml
+
+    - name: Scale Deployment to 2 replicas
+      command: kubectl scale deployment weather-ml-app --replicas=2

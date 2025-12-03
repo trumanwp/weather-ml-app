@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-ml-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weather-ml-app
+  template:
+    metadata:
+      labels:
+        app: weather-ml-app
+    spec:
+      containers:
+      - name: weather-ml-container
+        image: trumanwp/weather-ml-app:latest
+        ports:
+        - containerPort: 5000
