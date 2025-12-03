@@ -39,7 +39,7 @@ class TestModelAppIntegration(unittest.TestCase):
 		self.assertTrue(found, "The page should include a valid weather prediction.")
 
 		# Ensure that the result page should include a prediction time
-		self.assertIn('seconds', html_text, "The page should include a prediction time.")
+		self.assertIn('ms', html_text, "The page should include a prediction time.")
 				
 
 if __name__ == '__main__':
